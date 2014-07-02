@@ -229,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				FE6FA469195FEEE70016DAC1 /* UIAccount.swift */,
-				FE14354C1964A20C009F49BC /* Container.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -272,6 +271,7 @@
 		FE6FA4A9195FFF450016DAC1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE14354C1964A20C009F49BC /* Container.swift */,
 				FE6FA4AA195FFF5D0016DAC1 /* Model.xcdatamodeld */,
 				FE6FA4B019601C810016DAC1 /* Account.swift */,
 			);
