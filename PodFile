@@ -1,0 +1,28 @@
+platform :ios, "7.0"
+
+inhibit_all_warnings!
+
+target :Uploader, :exclusive => true do
+  pod 'BlocksKit'
+  pod 'Reachability'
+  pod 'ReactiveCocoa'
+  pod 'MagicalRecord'
+  pod 'Typhoon'
+  pod 'AFNetworking'
+  pod 'GoogleAnalytics-iOS-SDK'
+  pod 'CocoaLumberjack'
+  pod 'Bolts'
+  pod 'Parse'
+  pod 'SVProgressHUD'
+  # pod 'GPUImage'
+  # pod 'Appirater'
+  # pod 'CrashlyticsFramework' # http://qiita.com/asakahara/items/cfa404267ed60fb21927
+end
+
+# Testing framework for Test target.
+target :UploaderTests, :exclusive => true do
+  # pod 'Kiwi/XCTest'
+  pod 'BlocksKit'
+  pod 'MagicalRecord'
+  pod 'Parse'
+end

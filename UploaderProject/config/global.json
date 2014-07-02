@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Uploader": {
+            "applicationId": "yGA6UdvCTMxt3xHSgUJEX5if3O4hCmBS5AHA5Pny", 
+            "masterKey": "MDpUKkMmI9sXw3ofsRw81lvOFx6UhWZQbiSTGfzW"
+        }, 
+        "_default": {
+            "link": "Uploader"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}
