@@ -21,6 +21,8 @@
 		FE6FA48A195FF0600016DAC1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6FA489195FF0600016DAC1 /* Nimble.framework */; };
 		FE6FA4AC195FFF5D0016DAC1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE6FA4AA195FFF5D0016DAC1 /* Model.xcdatamodeld */; };
 		FE6FA4B119601C810016DAC1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FA4B019601C810016DAC1 /* Account.swift */; };
+		FE8DB7661967B7B9005AD3D0 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DB7651967B7B9005AD3D0 /* ApiClient.swift */; };
+		FEF230F9196770A100AD9398 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FEF230F8196770A100AD9398 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,10 @@
 		FE6FA49F195FF9150016DAC1 /* UploaderTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UploaderTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FE6FA4AB195FFF5D0016DAC1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FE6FA4B019601C810016DAC1 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		FE8DB7651967B7B9005AD3D0 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		FEF230F51967704200AD9398 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		FEF230F71967706C00AD9398 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		FEF230F8196770A100AD9398 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				FE555962195FEE8100E6EA54 /* Info.plist */,
+				FEF230F8196770A100AD9398 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				FE14354C1964A20C009F49BC /* Container.swift */,
 				FE6FA4AA195FFF5D0016DAC1 /* Model.xcdatamodeld */,
 				FE6FA4B019601C810016DAC1 /* Account.swift */,
+				FE8DB7651967B7B9005AD3D0 /* ApiClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 				FE55595B195FEE8000E6EA54 /* Frameworks */,
 				FE55595C195FEE8000E6EA54 /* Resources */,
 				648C67FA2F314701B7AD9867 /* Copy Pods Resources */,
+				FEF230FA19677C5600AD9398 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -405,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE555969195FEE8100E6EA54 /* Main.storyboard in Resources */,
+				FEF230F9196770A100AD9398 /* Settings.bundle in Resources */,
 				FE55596B195FEE8100E6EA54 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +489,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		FEF230FA19677C5600AD9398 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n    ";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -486,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8DB7661967B7B9005AD3D0 /* ApiClient.swift in Sources */,
 				FE6FA4B119601C810016DAC1 /* Account.swift in Sources */,
 				FE14354D1964A20C009F49BC /* Container.swift in Sources */,
 				FE6FA46A195FEEE70016DAC1 /* UIAccount.swift in Sources */,
@@ -544,6 +568,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FE555968195FEE8100E6EA54 /* Base */,
+				FEF230F51967704200AD9398 /* ja */,
+				FEF230F71967706C00AD9398 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

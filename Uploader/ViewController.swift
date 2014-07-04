@@ -11,25 +11,56 @@ import UIKit
 class ViewController: UIViewController {
     var _launched: Bool?
     @IBOutlet var contentTextView: UITextView
+    @IBOutlet var accountTextView: UITextView
                             
     @IBOutlet var myImageView: UIImageView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let moc = NSManagedObjectContext.MR_defaultContext()
-        
-        let account = Account.MR_createInContext(moc) as Account
-        account.name = "fuga"
-        moc.MR_saveToPersistentStoreAndWait()
-        
-        let pfObject = PFObject(className: "Test")
-        pfObject["hoge"] = "fuga"
-        pfObject.save(nil)
         
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         launchCamera()
+        
+        coredataSample()
+        
+        
+//        pfObjectSample()
+//        loginToFacebook()
+    }
+    
+    func coredataSample() {
+        
+        let moc = Container.sharedInstance.managedObjectContext
+        self.accountTextView.text = "\(Account.MR_findAll().count)"
+        
+        self.bk_performBlockInBackground({a in
+            let moc2 = Container.sharedInstance.childManagedObjectContext("hoge")
+            let moc3 = Container.sharedInstance.childManagedObjectContext("hoge")
+            let hoge = moc2 === moc3
+            for i in 1..10 {
+                let account = Account.MR_createInContext(moc) as Account
+                account.name = "fuga"
+            }
+            moc.MR_saveOnlySelfWithCompletion({success, error in
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.accountTextView.text = "\(Account.MR_findAll().count)"})
+                
+                })
+            }, afterDelay: 0)
+    }
+    
+    func pfObjectSample() {
+        let pfObject = PFObject(className: "Test")
+        pfObject["hoge"] = "fuga"
+        pfObject.save(nil)
+    }
+    
+    func loginToFacebook() {
         
         let me = PFUser.currentUser()
         if (me) {
@@ -47,16 +78,9 @@ class ViewController: UIViewController {
     
     @IBAction func getButtonDidTap(sender: UIButton) {
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.GET("http://ip.jsontest.com/", parameters: nil,
-        success: {op, responseObject in
-            let res = responseObject as Dictionary<String, String>
-            let hoge = res["ip"]
-            self.contentTextView.text = hoge
-            }, failure: { op, error in
-            
-        })
-        
+        Container.sharedInstance.apiClient.hoge { result in
+            self.contentTextView.text = result
+        }
     }
     func launchCamera() {
         if (_launched?) {

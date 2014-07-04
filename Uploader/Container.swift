@@ -8,11 +8,22 @@
 
 import Foundation
 
-class Container {
-    // あとで https://github.com/hpique/SwiftSingleton
+protocol IContainer {
+    var managedObjectContext: NSManagedObjectContext { get }
+    func childManagedObjectContext(key:String) -> NSManagedObjectContext
+    var apiClient: IApiClient { get };
+}
+
+class Container : IContainer {
+    // TODO: Typhoonなど使う
     var _managedObjectContext:NSManagedObjectContext?
+    var _childManagedObjectContextDictionary: Dictionary<String, NSManagedObjectContext>?
     
-    init() {
+    class var sharedInstance : Container {
+        struct Static {
+            static let instance = Container()
+        }
+        return Static.instance
     }
     
     var managedObjectContext:NSManagedObjectContext {
@@ -24,5 +35,25 @@ class Container {
             _managedObjectContext = NSManagedObjectContext.MR_defaultContext()
             return _managedObjectContext!
         }
+    }
+    
+    var apiClient: IApiClient {
+    get {
+        return ApiClient.sharedInstance
+    }
+    }
+    
+    func childManagedObjectContext(key:String) -> NSManagedObjectContext {
+        if let moc = _childManagedObjectContextDictionary?[key]? {
+            return moc
+        }
+        let moc = NSManagedObjectContext.MR_contextWithParent(self.managedObjectContext)
+        if var dict = _childManagedObjectContextDictionary? {
+            dict[key] = moc
+            _childManagedObjectContextDictionary = dict
+        } else {
+            _childManagedObjectContextDictionary = [key:moc]
+        }
+        return moc
     }
 }
