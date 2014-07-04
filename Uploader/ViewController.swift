@@ -16,20 +16,31 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let moc = NSManagedObjectContext.MR_defaultContext()
+        let moc = Container.sharedInstance.managedObjectContext
         
         let account = Account.MR_createInContext(moc) as Account
         account.name = "fuga"
         moc.MR_saveToPersistentStoreAndWait()
         
-        let pfObject = PFObject(className: "Test")
-        pfObject["hoge"] = "fuga"
-        pfObject.save(nil)
+
         
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         launchCamera()
+//        pfObjectSample()
+//        loginToFacebook()
+    }
+    
+    func pfObjectSample() {
+        let pfObject = PFObject(className: "Test")
+        pfObject["hoge"] = "fuga"
+        pfObject.save(nil)
+    }
+    
+    func loginToFacebook() {
         
         let me = PFUser.currentUser()
         if (me) {
