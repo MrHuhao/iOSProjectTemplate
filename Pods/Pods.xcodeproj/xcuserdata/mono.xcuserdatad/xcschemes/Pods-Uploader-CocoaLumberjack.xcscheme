@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "875E18CA6DFF4C24B6291384"
+               BlueprintIdentifier = "74F97085A886413085B6328D"
                BuildableName = "libPods-Uploader-CocoaLumberjack.a"
                BlueprintName = "Pods-Uploader-CocoaLumberjack"
                ReferencedContainer = "container:Pods.xcodeproj">

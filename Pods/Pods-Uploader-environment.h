@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// AMScrollingNavbar
+#define COCOAPODS_POD_AVAILABLE_AMScrollingNavbar
+#define COCOAPODS_VERSION_MAJOR_AMScrollingNavbar 1
+#define COCOAPODS_VERSION_MINOR_AMScrollingNavbar 0
+#define COCOAPODS_VERSION_PATCH_AMScrollingNavbar 0
+
 // BlocksKit
 #define COCOAPODS_POD_AVAILABLE_BlocksKit
 #define COCOAPODS_VERSION_MAJOR_BlocksKit 2

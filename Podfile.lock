@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AMScrollingNavbar (1.0)
   - BlocksKit (2.2.3):
     - BlocksKit/All
   - BlocksKit/All (2.2.3):
@@ -64,6 +65,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AMScrollingNavbar
   - BlocksKit
   - Bolts
   - CocoaLumberjack
@@ -77,6 +79,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  AMScrollingNavbar: 962c39aa4a60f7f4d8ccea7401c8499905853beb
   BlocksKit: 07c8a80f04275efac6a5f8b973782489c083a182
   Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
   CocoaLumberjack: 94accd5749f5c5d15134c8d50f34a973aed8ef69

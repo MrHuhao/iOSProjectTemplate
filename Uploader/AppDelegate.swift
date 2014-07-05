@@ -10,17 +10,17 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+    
     var window: UIWindow?
     let parseApplicationId = "yGA6UdvCTMxt3xHSgUJEX5if3O4hCmBS5AHA5Pny"
     let parseClientKey = "oexJG0qMpMfqREQD1CGt4cWJPl0OEXvqnCtfMNCB"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+
         
-        
-        Parse.setApplicationId(parseApplicationId, clientKey: parseClientKey)
-        PFFacebookUtils.initializeFacebook()
+//        Parse.setApplicationId(parseApplicationId, clientKey: parseClientKey)
+//        PFFacebookUtils.initializeFacebook()
         
         return true
     }
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+//        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -52,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sourceApplication: String!,
         annotation: AnyObject!) -> Bool {
         
-            return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+//            return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication, withSession: PFFacebookUtils.session())
+            return true
     }
 
 

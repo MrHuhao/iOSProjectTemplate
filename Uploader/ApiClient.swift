@@ -14,7 +14,7 @@ protocol IApiClient {
 
 class ApiClient : IApiClient {
     
-    class var sharedInstance : ApiClient {
+    class var sharedInstance : IApiClient {
     struct Static {
         static let instance = ApiClient()
         }

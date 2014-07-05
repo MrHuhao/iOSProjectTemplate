@@ -12,6 +12,7 @@ protocol IContainer {
     var managedObjectContext: NSManagedObjectContext { get }
     func childManagedObjectContext(key:String) -> NSManagedObjectContext
     var apiClient: IApiClient { get };
+    var logger: ILogger { get };
 }
 
 class Container : IContainer {
@@ -55,5 +56,9 @@ class Container : IContainer {
             _childManagedObjectContextDictionary = [key:moc]
         }
         return moc
+    }
+    
+    var logger:ILogger {
+    get { return Logger.sharedInstance }
     }
 }

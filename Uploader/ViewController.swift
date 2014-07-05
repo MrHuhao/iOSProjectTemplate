@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 mono. All rights reserved.
 //
 
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -17,12 +18,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        Container.sharedInstance.logger.log("didload")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+                
         launchCamera()
         
         coredataSample()
