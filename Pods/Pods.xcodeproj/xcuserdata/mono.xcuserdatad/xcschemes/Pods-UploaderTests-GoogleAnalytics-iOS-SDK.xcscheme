@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F44E618D48D64CE4A24DD6EA"
+               BlueprintIdentifier = "0634511C0DEA499F9FA41669"
                BuildableName = "libPods-UploaderTests-GoogleAnalytics-iOS-SDK.a"
                BlueprintName = "Pods-UploaderTests-GoogleAnalytics-iOS-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
