@@ -9,7 +9,7 @@
 import Foundation
 
 protocol IApiClient {
-    func  
+    func hoge(completed:(String?)->())
 }
 
 class ApiClient : IApiClient {
