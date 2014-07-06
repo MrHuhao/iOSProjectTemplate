@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     var _launched: Bool?
     @IBOutlet var contentTextView: UITextView
     @IBOutlet var accountTextView: UITextView
-                            
+    
     @IBOutlet var myImageView: UIImageView
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,33 +23,31 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-                
+        
         launchCamera()
         
         coredataSample()
         
         
-//        pfObjectSample()
-//        loginToFacebook()
+        //        pfObjectSample()
+        //        loginToFacebook()
     }
     
     func coredataSample() {
         
         let moc = Container.sharedInstance.managedObjectContext
-        self.accountTextView.text = "\(Account.MR_findAll().count)"
+        self.accountTextView.text = "\(Account.MR_countOfEntities())"
         
         self.bk_performBlockInBackground({a in
             let moc2 = Container.sharedInstance.childManagedObjectContext("hoge")
-            let moc3 = Container.sharedInstance.childManagedObjectContext("hoge")
-            let hoge = moc2 === moc3
-            for i in 1..10 {
-                let account = Account.MR_createInContext(moc) as Account
+            for i in 1..100 {
+                let account = Account.MR_createInContext(moc2) as Account
                 account.name = "fuga"
             }
-            moc.MR_saveOnlySelfWithCompletion({success, error in
+            moc2.MR_saveToPersistentStoreWithCompletion({success, error in
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.accountTextView.text = "\(Account.MR_findAll().count)"})
+                    self.accountTextView.text = "\(Account.MR_countOfEntities())"})
                 
                 })
             }, afterDelay: 0)
